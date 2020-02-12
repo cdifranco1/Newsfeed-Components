@@ -95,7 +95,6 @@ const data = [
   }
 ];
 
-
 function createArticle(obj){
 
   let container = document.createElement('div');
@@ -105,10 +104,13 @@ function createArticle(obj){
   let paraTwo = document.createElement('p');
   let paraThree = document.createElement('p');
   let span = document.createElement('span')
+  let button = document.createElement('button');
+
 
   container.classList.add('article');
   date.classList.add('date');
   span.classList.add('expandButton');
+  button.classList.add("dismiss-btn")
   
   container.appendChild(title);
   container.appendChild(date);
@@ -116,18 +118,24 @@ function createArticle(obj){
   container.appendChild(paraTwo);
   container.appendChild(paraThree);
   container.appendChild(span);
+  container.appendChild(button);
 
   title.textContent = obj.title;
   date.textContent = obj.date;
   paraOne.textContent = obj.firstParagraph;
   paraTwo.textContent = obj.secondParagraph;
   paraThree.textContent = obj.thirdParagraph;
-  span.textContent = 'Expand'
+  span.textContent = 'Expand';
+  button.textContent = 'Dismiss';
 
 
   span.addEventListener("click", () => {
     container.classList.toggle('article-open')
   });
+
+  button.addEventListener("click", ()=> {
+    container.style.display = 'none';
+  })
 
   return container;
 };

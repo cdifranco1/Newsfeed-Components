@@ -76,6 +76,11 @@
 .article-open {
   height: 400px;
 }
+.dismiss-btn {
+  position: absolute;
+  right: 5px;
+  top: 50px;
+}
 .menu-button {
   position: absolute;
   left: 20px;
