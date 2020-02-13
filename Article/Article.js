@@ -85,8 +85,65 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Random Title',
+    date: 'February 12, 2019',
+    firstParagraph: 'something interesting',
+    secondParagraph: `something else`,
+    thirdParagraph: `last paragraph`
   }
 ];
+
+function createArticle(obj){
+
+  let container = document.createElement('div');
+  let title = document.createElement('h2');
+  let date = document.createElement('p');
+  let paraOne = document.createElement('p');
+  let paraTwo = document.createElement('p');
+  let paraThree = document.createElement('p');
+  let span = document.createElement('span')
+  let button = document.createElement('button');
+
+
+  container.classList.add('article');
+  date.classList.add('date');
+  span.classList.add('expandButton');
+  button.classList.add("dismiss-btn")
+  
+  container.appendChild(title);
+  container.appendChild(date);
+  container.appendChild(paraOne);
+  container.appendChild(paraTwo);
+  container.appendChild(paraThree);
+  container.appendChild(span);
+  container.appendChild(button);
+
+  title.textContent = obj.title;
+  date.textContent = obj.date;
+  paraOne.textContent = obj.firstParagraph;
+  paraTwo.textContent = obj.secondParagraph;
+  paraThree.textContent = obj.thirdParagraph;
+  span.textContent = 'Expand';
+  button.textContent = 'Dismiss';
+
+
+  span.addEventListener("click", () => {
+    container.classList.toggle('article-open')
+  });
+
+  button.addEventListener("click", ()=> {
+    container.style.display = 'none';
+  })
+
+  return container;
+};
+
+data.map((item) => {
+  document.querySelector('.articles').appendChild(createArticle(item));
+});
+
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
@@ -99,16 +156,18 @@ const data = [
     <span class='expandButton'></span>
   </div>
 
-  Hint: You will need to use createElement more than once here!
+  Hint: You will need to use createElement more than once here!*/
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
-  Step 3: return the entire component.
+  // Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+  // Step 3: return the entire component.
 
-*/
+  // Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+
+  // Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+
+// */
